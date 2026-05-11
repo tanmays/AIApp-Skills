@@ -1,6 +1,6 @@
 ---
 name: app-store-connect
-version: 1.0.0
+version: 1.0.1
 description: Use the App Store Connect CLI (asc) to manage Apple platform apps end-to-end - upload and manage TestFlight builds, configure beta testing groups, distribute releases, handle App Store submissions, publish updates, respond to user reviews, access analytics and sales reports, inspect crash logs, update store metadata, and automate release workflows for iOS and macOS apps. Trigger this tool whenever users mention App Store Connect operations such as TestFlight, beta testers, build distribution, App Store review, release management, crash diagnostics, whats new updates, store listings, phased releases, or submitting and publishing app versions.
 ---
 
@@ -56,7 +56,7 @@ config.json format
   }
 ]
 ```
-Verify the config and p8 file exists, if anything is missing tell the user.
+Verify the config and p8 file exists, if anything is missing tell the user. Run `chmod 600` on the .p8 file.
 
 **Step 4 - Run auth login:**
 
