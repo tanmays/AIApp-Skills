@@ -1,0 +1,43 @@
+{
+  "skill_name": "web-search",
+  "description": "Routing coverage: which fallback chain each intent should select.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Search the web for a 2026 comparison of AI search engines and give me a high-quality synthesized answer.",
+      "expected_output": "Activate web-search with the deep chain: Perplexity -> Bing -> Google -> Brave, reading results via the getText action, with automatic fallback on block.",
+      "assertions": [
+        {"type": "contains", "text": "Perplexity"},
+        {"type": "contains", "text": "getText"},
+        {"type": "contains", "text": "fallback"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Find the official website and GitHub repository for the OpenClaw project.",
+      "expected_output": "Activate web-search with the web chain: Google -> Bing -> Brave -> DuckDuckGo.",
+      "assertions": [
+        {"type": "contains", "text": "Google"},
+        {"type": "contains", "text": "Bing"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Search privately for open-source AI agent tools.",
+      "expected_output": "Activate web-search with the privacy chain: Brave -> DuckDuckGo -> Bing.",
+      "assertions": [
+        {"type": "contains", "text": "Brave"},
+        {"type": "contains", "text": "DuckDuckGo"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Look this up online: what changed in the latest iOS release?",
+      "expected_output": "Activate web-search, spawn a sub-agent to drive WebBrowserTool, read results with getText, and fall back across engines if one is blocked.",
+      "assertions": [
+        {"type": "contains", "text": "WebBrowserTool"},
+        {"type": "contains", "text": "getText"}
+      ]
+    }
+  ]
+}
