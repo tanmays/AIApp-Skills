@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+
+# Python build artifacts
+__pycache__/
+*.pyc
