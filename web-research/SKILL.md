@@ -1,12 +1,16 @@
 ---
-name: web-search
+name: web-research
 version: 1.0.0
-description: This skill should be used when the user asks to "search the web", "look this up online", "search for", "find this on the internet", "google this", or needs real-time information from search engines instead of model memory. Drives WebBrowserTool across multiple English-language engines (Perplexity, Google, Bing, Brave, DuckDuckGo) with automatic fallback when an engine is blocked, logged out, or returns poor results.
+description: This skill should be used only when the user wants to deeply research a topic on the web — e.g. "research this topic", "do a deep dive", "compare these in depth", "investigate and synthesize sources", or wants a thorough multi-source answer with citations. It drives the in-app browser across multiple engines with fallback, which is thorough but slow. For quick or general web searches and "look this up" / "find this online" / "search for" requests, prefer the built-in `webSearch` tool instead.
+
+Drives WebBrowserTool across multiple English-language engines (Perplexity, Google, Bing, Brave, DuckDuckGo) with automatic fallback when an engine is blocked, logged out, or returns poor results.
 ---
 
-# web-search
+# web-research
 
-Search the web by driving AIApp's `WebBrowserTool` against multiple search engines, falling back automatically when one engine is blocked, logged out, or returns poor results. No search API keys are required — every engine is reached through the in-app browser.
+Research a topic on the web by driving AIApp's `WebBrowserTool` against multiple search engines, falling back automatically when one engine is blocked, logged out, or returns poor results. No search API keys are required — every engine is reached through the in-app browser.
+
+> **This skill is thorough but slow.** Driving the in-app browser across engines is iterative and costly, so reserve it for genuine research tasks that need multiple sources synthesized with citations. For quick lookups or general web searches, prefer the faster built-in `webSearch` tool instead.
 
 > **Always spawn a sub-agent (secondary model) to perform the browsing.** `WebBrowserTool` is verbose and iterative — navigating, reading, and falling back across engines floods the main conversation. Delegate the entire search-and-read loop to a sub-agent and return only the final result and its source. Never drive `WebBrowserTool` directly from the main thread.
 
