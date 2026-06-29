@@ -35,7 +35,7 @@ Activate this skill when the user wants:
 
 ## Intent-based fallback chains
 
-Pick the chain by user intent (or run `scripts/build_search_plan.py` to generate it):
+Pick the chain by user intent (or run `skills/web-research/scripts/build_search_plan.py` to generate it):
 
 - **Deep research / comparison / synthesized answer**: `Perplexity → Bing → Google → Brave`
 - **General web / official site / source lookup**: `Google → Bing → Brave → DuckDuckGo`
@@ -43,7 +43,7 @@ Pick the chain by user intent (or run `scripts/build_search_plan.py` to generate
 
 ## Workflow
 
-1. Infer the search intent from the request and pick the matching chain. Optionally run `scripts/build_search_plan.py "<query>" -i <deep|web|privacy> -j` to get the ordered URLs and block signals.
+1. Infer the search intent from the request and pick the matching chain. Optionally run `skills/web-research/scripts/build_search_plan.py "<query>" -i <deep|web|privacy> -j` to get the ordered URLs and block signals.
 2. **Spawn a sub-agent on the secondary model to do the browsing** — `WebBrowserTool` is verbose and iterative, so isolate it from the main conversation (this matches the tool's own guidance).
 3. Navigate `WebBrowserTool` to the first engine's URL.
 4. Read results with the **`getText` action** — it returns only rendered visible text and is far lighter on tokens than `getHtml`. Reserve `getHtml` for when CSS selectors are needed to click into a specific result, and `findButtons` / `clickElementByText` to interact.
@@ -76,8 +76,8 @@ Treat a search as successful when at least two are true:
 
 ## Resources
 
-- `scripts/build_search_plan.py` — generate the engine order, pre-built URLs, and block signals for a query and intent.
-- `references/routing-evals.json` — expected fallback chain per intent; consult when verifying or tuning routing.
+- `skills/web-research/scripts/build_search_plan.py` — generate the engine order, pre-built URLs, and block signals for a query and intent.
+- `skills/web-research/references/routing-evals.json` — expected fallback chain per intent; consult when verifying or tuning routing.
 
 ## Notes
 

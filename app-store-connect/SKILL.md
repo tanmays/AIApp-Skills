@@ -20,8 +20,8 @@ asc version
 **Updating**: re-run the same `curl` command to update.
 
 **Step 0 - Existing Config:**
-- Check for existing setup at path `/config/skills/app-store-connect/auth.json`
-- Verify .p8 file exists at path `/config/skills/app-store-connect/*.p8`
+- Check for existing setup at path `config/skills/app-store-connect/auth.json`
+- Verify .p8 file exists at path `config/skills/app-store-connect/*.p8`
 - If config file already exists move to step 6
 
 ## Auth Setup
@@ -45,7 +45,7 @@ The API Keys page shows a table. Find the newly created key row:
 - **Key ID** - the 10-character string in the first column (e.g. `ABC123XYZ9`)
 - **Issuer ID** - shown at the top of the page (a UUID like `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee` )
 
-Once the user gives you the required info, create a `auth.json` file at `/config/skills/app-store-connect/auth.json`
+Once the user gives you the required info, create a `auth.json` file at `config/skills/app-store-connect/auth.json`
 auth.json format
 ```
 [
@@ -65,7 +65,7 @@ asc auth login --bypass-keychain \
   --name "Halo Agent" \
   --key-id "KEY_ID" \
   --issuer-id "ISSUER_ID" \
-  --private-key /config/skills/app-store-connect/XXXX.p8
+  --private-key config/skills/app-store-connect/XXXX.p8
 ```
 
 **Step 5 - Verify:**
@@ -86,8 +86,8 @@ When a user asks to do something with `asc` but auth is not set up yet, **do not
 
 ### Auth Files Location
 
-- Config: `/config/skills/app-store-connect/auth.json`
-- Private Key: `/config/skills/app-store-connect/AuthKey_*.p8`
+- Config: `config/skills/app-store-connect/auth.json`
+- Private Key: `config/skills/app-store-connect/AuthKey_*.p8`
 
 ## Common Workflows
 
